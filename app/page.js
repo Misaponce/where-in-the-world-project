@@ -1,12 +1,9 @@
-'use client'
-
-import { API } from '@/components'
-import Image from 'next/image'
+import React from 'react'
 
 export default function Home() {
   return (
-    <>
-      <API />
-    </>
+    <div>
+      Home
+    </div>
   )
 }

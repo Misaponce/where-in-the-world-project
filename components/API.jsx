@@ -1,3 +1,5 @@
+"use client"
+
 import {useEffect, useState} from 'react'
 import Image from 'next/image';
 
@@ -19,7 +21,7 @@ const API = () => {
 
           if (response.ok) {
             const result = await response.json()
-            console.log(result);
+            // console.log(result);
             setData(result)
           } else {
             console.error(`Failed to fetch data`)
@@ -30,7 +32,7 @@ const API = () => {
 
       }
 
-      fetchData('North America'); // Call the fetchData function to fetch data when the component mounts
+      fetchData('Northern Europe'); // Call the fetchData function to fetch data when the component mounts
 
     },[])
 
