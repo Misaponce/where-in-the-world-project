@@ -1,13 +1,17 @@
-import React from 'react'
+const Select = ({ onChange, value }) => {
 
-const Select = () => {
   return (
-    <select className="select w-full max-w-xs" defaultValue={"DEFAULT"}>
-      <option disabled value={"DEFAULT"}>Filter by</option>
-      <option value={"region"}>Region</option>
-      <option value={"subregion"}>Subregion</option>
-      <option value={"name"}>Name</option>
-      <option value={"language"}>Language</option>
+    <select 
+      className="select select-bordered w-full max-w-xs" 
+      value={value} 
+      onChange={onChange}
+      >
+      <option disabled value={"Filter by Region"}>Filter by Region</option>
+      <option value={"america"}>America</option>
+      <option value={"europe"}>Europe</option>
+      <option value={"africa"}>Africa</option>
+      <option value={"asia"}>Asia</option>
+      <option value={"oceania"}>Oceania</option>
     </select>
   )
 }
