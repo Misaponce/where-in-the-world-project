@@ -3,16 +3,17 @@
 import React, { useEffect, useState } from 'react'
 import { Theme } from '.'
 import Link from 'next/link';
+import useLocalStorage from 'use-local-storage';
 
 const Navbar = () => {
-  const [theme, setTheme] = useState("theme" ? "theme" : "dark");
+  const [theme, setTheme] = useLocalStorage('theme', 'dark');
 
   const switchTheme = (e) => {
 
     if(e.target.checked) {
-      setTheme("light");
+      setTheme("dark");
     } else {
-      setTheme("dark")
+      setTheme("light")
     }
   };
 
@@ -22,8 +23,10 @@ const Navbar = () => {
     document.querySelector("html").setAttribute("data-theme", localTheme)
   } , [theme])
 
+
+
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar border-b-2 border-base-200">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl">WiW</a>
       </div>

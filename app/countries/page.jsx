@@ -43,7 +43,7 @@ const page = () => {
   }, [selectedFilter, currentPage]);
 
   return (
-    <main>
+    <main className='flex flex-col items-center'>
       <div>
         {/* Search Menu */}
         <div className='search-container p-10 sm:flex sm:justify-between'>
@@ -116,7 +116,7 @@ const page = () => {
           }
         </div>
         {/* Pagination Controls */}
-        <div className="pagination">
+        <div className="pagination flex items-center justify-center p-4">
           <button
             onClick={() => setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))}
             disabled={currentPage === 1}

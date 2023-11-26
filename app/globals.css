@@ -2,9 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: hsl(0, 0%, 98%);
+}
+
+[data-theme='dark'] {
+  --background: hsl(207, 26%, 17%);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   /* border: solid 1px red; */
 }
+
+body {
+  background-color: var(--background);
+}
+
+/* Footer Style */
+.attribution { font-size: 11px; text-align: center;}
