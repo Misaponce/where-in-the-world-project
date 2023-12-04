@@ -20,3 +20,22 @@ export async function fetchCountries(region) {
         console.log(error)
     }
 }
+
+
+export async function fetchSingleCountrie(countryCode) {
+    const url = `https://restcountries.com/v3.1/alpha/${countryCode}`
+
+    try {
+        const response = await fetch(url)
+
+        if (response.ok) {
+            const result = await response.json()
+            // console.log(result);
+            return result
+          } else {
+            console.error(`Failed to fetch data`)
+          }
+    } catch (error) {
+        console.log(error)
+    }
+}

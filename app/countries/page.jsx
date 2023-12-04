@@ -2,8 +2,7 @@
 
 import { fetchCountries } from '@/api/httpClient'
 import {useEffect, useState} from 'react'
-import Image from 'next/image';
-import { SearchForm, Select } from '@/components';
+import { CustomCard, SearchForm, Select } from '@/components';
 
 const page = () => {
 
@@ -70,48 +69,17 @@ const page = () => {
               </div>
             :
             data.map((item, index) => (
-              <div key={index} className='card w-80 bg-base-100 shadow-xl m-3 h-full'>
-                {/* country flag */}
-                <figure className='w-full overflow-hidden'>
-                  <Image 
-                  src={item.flags.svg} 
-                  alt={`${item.name.official}-flag`} 
-                  className='object-cover group-hover:opacity-75'
-                  width={300}
-                  height={300}
-                  />
-                  {/* <img src={item.flags.svg} alt={`${item.name.official}-flag`} /> */}
-                </figure>
-                {/* Country Info */}
-                <div className='card-body'>
-                  <h2 className='card-title font-bold'>
-                    {item.name.official}
-                  </h2>
-                  {/* Population */}
-                  <p className='text-lg'>
-                    <span className='font-semibold me-2'>
-                      Population: 
-                    </span> 
-                    {/* Formating using toLocaleString method */}
-                      {item.population.toLocaleString()} 
-                  </p>
-                  {/* Region */}
-                  <p className='text-lg'>
-                    <span className='font-semibold me-2'>
-                      Region: 
-                    </span> 
-                      {item.region}
-                  </p>
-                  {/* Capital */}
-                  <p className='text-lg'>
-                    <span className='font-semibold me-2'>
-                      Capital: 
-                    </span> 
-                      {item.capital}
-                  </p>
-
-                </div>
-              </div>
+              // Custom country card with it's props
+              <CustomCard 
+                key={index}
+                flagSrc={item.flags.svg}
+                flagAlt={item.name.official}
+                countryName={item.name.official}
+                capital={item.capital}
+                region={item.region}
+                population={item.population}
+                countryCode={item.ccn3}
+              />
             ))
           }
         </div>
