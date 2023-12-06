@@ -2,13 +2,13 @@
 
 import { fetchSingleCountrie } from '@/api/httpClient';
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 function page() {
-
   const [countryData, setCountryData] = useState([]);
-
-  const cCode = '170';
+  const searchParams = useSearchParams()
+  const countryCode = searchParams.get('countryCode')
 
   const fetchCardData = async (code) => {
     try {
@@ -19,10 +19,12 @@ function page() {
       console.log(error)
     }
   }
-
+  
   useEffect(() => {
-    fetchCardData(cCode)
-  },[])
+    const url = `${countryCode}`
+      console.log(url);
+      fetchCardData(url)
+  },[countryCode])
 
   return (
     <div className='min-h-screen flex flex-col items-center justify-evenly'>
@@ -44,8 +46,8 @@ function page() {
               <ul className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
                 <li>
                   <p>
-                    <span>Native Name:</span>
-                    {country.name.nativeName.spa.common}
+                    <span>Official Name:</span>
+                    {country.name.official}
                   </p>
                 </li>
                 <li>
@@ -103,13 +105,19 @@ function page() {
              </div>
              <div className='flex items-center'>
               <span>
-                Border Countries
+                Border Countries:
               </span>
-              {country.borders.map((border, index) => (
+              {country.borders ? (country.borders.map((border, index) => (
                 <div key={index} className='flex justify-center items-center'>
                   <button className='btn btn-outline m-1'>{border}</button>
                 </div>
-              ))}
+              ))
+              ) : (
+                <div className='flex justify-center items-center'>
+                  <p>No Borders</p>
+                </div>
+              )
+            }
              </div>
           </div>
         </div>
