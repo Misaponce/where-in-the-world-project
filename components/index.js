@@ -4,7 +4,8 @@ import Theme from './Theme';
 import SearchForm from './SearchForm';
 import Select from './Select';
 import Footer from './Footer';
-import CustomCard from './CustomCard'
+import CustomCard from './CustomCard';
+import Flag from './Flag';
 
 export {
     API,
@@ -14,4 +15,5 @@ export {
     Select,
     Footer,
     CustomCard,
+    Flag,
 }

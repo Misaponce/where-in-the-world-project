@@ -2,6 +2,7 @@
 
 import { fetchSingleCountrie } from '@/api/httpClient';
 import Link from 'next/link'
+import { Flag } from '@/components';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
@@ -35,7 +36,12 @@ function page() {
       </div>
       {countryData.map((country, index) => (
         <div key={index} className="card lg:card-side bg-base-100 shadow-xl w-auto">
-          <figure><img src="https://daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album"/></figure>
+          <Flag 
+            src={country.flags.svg}
+            alt={'Flag'}
+            width={'50'}
+            height={'30'}
+          />
           <div className="card-body">
              {/* Country Name */}
              <div>

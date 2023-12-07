@@ -72,7 +72,7 @@ const page = () => {
               // Custom country card with it's props
               <CustomCard 
                 key={index}
-                flagSrc={item.flags.png}
+                flagSrc={item.flags.svg}
                 flagAlt={item.name.official}
                 countryName={item.name.official}
                 capital={item.capital}

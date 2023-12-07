@@ -6,14 +6,14 @@ const CustomCard = ({ countryName, region, population, capital, flagSrc, flagAlt
   return (
     <div className='card w-80 bg-base-100 shadow-xl m-3 h-full'>
       {/* country flag */}
+      {/* To use with searchParams later */}
       <Link href={`/country?countryCode=${countryCode}`}>
-        <figure className='w-full overflow-hidden cursor-pointer'>
+        <figure className='relative w-full h-48 overflow-hidden object-contain cursor-pointer'>
           <Image 
           src={flagSrc} 
           alt={`${flagAlt}-flag`} 
+          fill priority
           className='object-cover group-hover:opacity-75'
-          width={300}
-          height={300}
           />
           {/* <img src={item.flags.svg} alt={`${item.name.official}-flag`} /> */}
         </figure>
