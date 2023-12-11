@@ -15,7 +15,6 @@ const CustomCard = ({ countryName, region, population, capital, flagSrc, flagAlt
           fill priority
           className='object-cover group-hover:opacity-75'
           />
-          {/* <img src={item.flags.svg} alt={`${item.name.official}-flag`} /> */}
         </figure>
       </Link>
       {/* Country Info */}

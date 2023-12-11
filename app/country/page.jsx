@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Flag } from '@/components';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image';
 
 function page() {
   const [countryData, setCountryData] = useState([]);
@@ -28,105 +29,109 @@ function page() {
   },[countryCode])
 
   return (
-    <div className='min-h-screen flex flex-col items-center justify-evenly'>
-      <div className='self-start ms-3'>
+    <div className='min-h-screen flex flex-col items-center justify-evenly p-12'>
+      <div className='w-full flex items-start mb-4'>
         <Link href={'/countries'}>
-          <button className='btn btn-outline m-4'>Back</button>
+          <button className='btn btn-outline'>&larr; Back</button>
         </Link>
       </div>
+      {/* Country Card */}
       {countryData.map((country, index) => (
-        <div key={index} className="card lg:card-side bg-base-100 shadow-xl w-auto">
-          <Flag 
+      <div key={index} className='w-full flex flex-col md:flex-row md:items-center'>
+        <div className='md:flex-1 h-72 relative overflow-hidden p-4'>
+          <Image 
             src={country.flags.svg}
-            alt={'Flag'}
-            width={'50'}
-            height={'30'}
+            alt={`${country.name.common}-flag`}
+            fill priority
+            className='object-contain'
           />
-          <div className="card-body">
-             {/* Country Name */}
-             <div>
-              <h2 className='card-title'>{country.name.common}</h2>
-             </div>
-             {/* Country Info */}
-             <div>
+        </div>
+        <div className='flex-1 p-4'>
+            <div>
+              <h2 className='card-title text-2xl my-4'>{country.name.common}</h2>
+            </div>
+            {/* Country Info */}
+            <div>
               <ul className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
                 <li>
-                  <p>
-                    <span>Official Name:</span>
+                  <span>
+                    <span className='me-2 font-bold'>Official Name:</span>
                     {country.name.official}
-                  </p>
+                  </span>
                 </li>
                 <li>
-                  <p>
-                    <span>Population:</span>
+                  <span>
+                    <span className='me-2 font-bold'>Population:</span>
                     {country.population.toLocaleString()}
-                  </p>
+                  </span>
                 </li>
                 <li>
-                  <p>
-                    <span>Region:</span>
+                  <span>
+                    <span className='me-2 font-bold'>Region:</span>
                     {country.region}
-                  </p>
+                  </span>
                 </li>
                 <li>
-                  <p>
-                    <span>Sub Region:</span>
+                  <span>
+                    <span className='me-2 font-bold'>Sub Region:</span>
                     {country.subregion}
-                  </p>
+                  </span>
                 </li>
                 <li>
-                  <p>
-                    <span>Capital:</span>
+                  <span>
+                    <span className='me-2 font-bold'>Capital:</span>
                     {country.capital}
-                  </p>
+                  </span>
                 </li>
                 <li>
-                  <p>
-                    <span>Time Zone:</span>
+                  <span>
+                    <span className='me-2 font-bold'>Time Zone:</span>
                     {country.timezones}
-                  </p>
+                  </span>
                 </li>
                 <li>
-                  <p>
-                    <span>Currency:</span>
+                  <span className='flex'>
+                    <span className='me-2 font-bold'>Currencies:</span>
                     {Object.entries(country.currencies).map(([code, currency], index) => (
-                      <ul key={index}>
+                      <ul key={index} className=''>
                         <li>{currency.name}</li>
-                        <li>{currency.symbol}</li>
                       </ul>
                     ))}
-                  </p>
+                  </span>
                 </li>
                 <li>
-                  <p>
-                    <span>Languages:</span>
+                  <span className='flex'>
+                    <span className='me-2 font-bold'>Languages:</span>
                     {Object.entries(country.languages).map(([code, language], index) => (
                       <ul key={index}>
                         <li>{language}</li>
                       </ul>
                     ))}
-                  </p>
+                  </span>
                 </li>
               </ul>
-             </div>
-             <div className='flex items-center'>
-              <span>
+            </div>
+            {/* Borders container */}
+            <div className='my-2'>
+              <span className='me-2 font-bold'>
                 Border Countries:
               </span>
-              {country.borders ? (country.borders.map((border, index) => (
-                <div key={index} className='flex justify-center items-center'>
-                  <button className='btn btn-outline m-1'>{border}</button>
-                </div>
-              ))
-              ) : (
-                <div className='flex justify-center items-center'>
-                  <p>No Borders</p>
-                </div>
-              )
-            }
-             </div>
-          </div>
+              <div className='flex flex-wrap items-center'>
+                {country.borders ? (country.borders.map((border, index) => (
+                  <div key={index} className='flex justify-center items-center'>
+                    <button className='btn btn-outline m-1'>{border}</button>
+                  </div>
+                ))
+                ) : (
+                  <div className='flex justify-center items-center'>
+                    <p>No Borders</p>
+                  </div>
+                )
+                }
+              </div>
+            </div>
         </div>
+      </div>
       ))}
     </div>
   )

@@ -6,7 +6,7 @@ const Select = ({ onChange, value }) => {
       value={value} 
       onChange={onChange}
       >
-      <option disabled value={"Filter by Region"}>Filter by Region</option>
+      <option disabled value={"Filter by Region"} className="font-bold">Filter by Region:</option>
       <option value={"america"}>America</option>
       <option value={"europe"}>Europe</option>
       <option value={"africa"}>Africa</option>
